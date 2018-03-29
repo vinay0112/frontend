@@ -1,0 +1,74 @@
+<div class="row" align="center">
+<div>
+<div class="main-content-agile">
+		<div class="sub-main-w3">
+<br><img src="http://localhost:8181/Backend2/getimage/{{blog.postedBy.email}}"  class="img-circle"width="30px" height="30px" >
+<br>{{blog.postedBy.firstName}}&nbsp;{{blog.postedBy.lastName}}
+<div class="sub-main-w2">
+<div class="panel-body">
+<h5><b>{{blog.blogTitle}}</b></h5><br>
+
+<p ng-bind-html="content"></p><br>
+</div>
+<br align="right">{{blog.postedOn | date:'medium'}}<br>
+</div>
+<div>
+<a><span class="glyphicon glyphicon-heart" ng-class="isLiked? 'liked' : 'default'" ng-click="updateLikes(blog.id)">
+</span></a>{{blog.likes}} likes
+
+<a ng-click="onShowComments()" ><span class="glyphicon glyphicon-comment">{{comments.length}}</span></a><br>
+<ul style="list-style:none" ng-show="showComments">
+<li ng-repeat="comment in comments | orderBy:'-commentedOn'" >
+<!-- <div class="container">
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="panel panel-white post panel-shadow"> -->
+            <div class="main-content-agile">
+		<div class="sub-main-w2">
+                
+                        <img src="http://localhost:8181/back2/getimage/{{comment.commentedBy.email}}" class="img-circle" width="30px" height="30px" >
+
+                  
+                   
+                            <a href="#"><b>{{comment.commentedBy.firstName}}</b></a>
+                           
+                      
+                        <h6 class="text-muted time">{{comment.commentedOn | date:"medium"}}</h6>
+                   
+                <div class="post-description"> 
+                <p>{{comment.commentTxt}}</p>
+                </div>
+
+<!-- {{comment.commentTxt}}&nbsp;<b>CommentedBy</b><br><br><img src="http://localhost:8181/Backend2/getimage/{{comment.commentedBy.email}}" class="img-circle" width="30px" height="30px" >
+<br>{{comment.commentedBy.firstName}}&nbsp;<b>CommentedOn</b>{{comment.commentedOn | date:"medium"}}
+</li>
+</ul> -->
+</div>
+</div>
+</div>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+{{exceptionMessage.message}}
+ <div class="container pb-cmnt-container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="panel panel-info">
+                <div class="panel-body">
+                    <textarea placeholder="Write your comment here!" class="pb-cmnt-textarea"ng-model="commentTxt"></textarea> 
+                 <!--    <textarea rows="1" cols="10" ng-model="commentTxt"></textarea> -->
+                        <button class="btn btn-primary pull-right" type="button" ng-click="addComment(blog,commentTxt)">Share</button>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 
